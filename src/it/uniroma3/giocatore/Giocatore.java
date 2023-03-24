@@ -1,6 +1,6 @@
 package it.uniroma3.giocatore;
 
-
+import it.uniroma3.attrezzi.Attrezzo;
 
 public class Giocatore {
 
@@ -37,15 +37,17 @@ public class Giocatore {
 	
 	//rimozione dalla borsa
 	
-	/*
+	public boolean addAttrezzo(Attrezzo attrezo) {
+		return borsa.addAttrezzo(attrezo);
+	}
 	  
 	  
-	public Attrezzo removeAttrezzo(String nomeAttrezzo) {
-		return borsa.removeAttrezzo(nomeAttrezzo);
+	public void removeAttrezzo(Attrezzo attrezzo) {
+		borsa.removeAttrezzo(attrezzo);
 	}
 	
 	
-	*/
+	
 	
 	
 }
