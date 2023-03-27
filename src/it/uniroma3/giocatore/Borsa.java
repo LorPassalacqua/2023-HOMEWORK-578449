@@ -81,16 +81,16 @@ public class Borsa {
 	
 		
 	
-	public void removeAttrezzo(Attrezzo attrezzo) {
+	public boolean removeAttrezzo(Attrezzo attrezzo) {
 
-		for (int i=0; i<numeroAttrezzi; i++) {
-			if (attrezzo.getNome().equals(attrezzi[i].getNome()));
+		for (int i=0; i<numeroAttrezzi; i++)
+			if (attrezzo.getNome().equals(attrezzi[i].getNome())) {
 				attrezzi[i] = null;
 				numeroAttrezzi--;
 				this.attrezzi = ricostruisciArray(attrezzi);					
-		}
-	
-	
+				return true;
+			}
+		return false;
 	}
 		
 		

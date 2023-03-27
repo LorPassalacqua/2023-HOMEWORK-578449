@@ -180,8 +180,8 @@ public class Stanza {
 	public boolean removeAttrezzo(Attrezzo attrezzo) {
 
 		int temp = numeroAttrezzi;
-		for (int i=0; i<numeroAttrezzi; i++) {
-			if (attrezzo.getNome().equals(attrezzi[i].getNome()));
+		for (int i=0; i<numeroAttrezzi; i++)
+			if (attrezzo.getNome().equals(attrezzi[i].getNome())) {
 				attrezzi[i] = null;
 				numeroAttrezzi--;
 				this.attrezzi = ricostruisciArray(attrezzi);
