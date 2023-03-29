@@ -1,6 +1,7 @@
 package it.uniroma3.giocatore;
 
 import it.uniroma3.attrezzi.Attrezzo;
+import it.uniroma3.diadia.IOConsole;
 
 public class Giocatore {
 
@@ -46,7 +47,9 @@ public class Giocatore {
 		borsa.removeAttrezzo(attrezzo);
 	}
 	
-	
+	public void mostraOggettiInBorsa(IOConsole scanner) {
+		borsa.mostraOgettiInBorsa(scanner);
+	}
 	
 	
 	

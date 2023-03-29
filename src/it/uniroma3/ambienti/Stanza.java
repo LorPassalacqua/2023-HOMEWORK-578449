@@ -71,7 +71,20 @@ public class Stanza {
         		stanza = this.stanzeAdiacenti[i];
         return stanza;
 	}
+	
+	
+	
+	public String[] getDirezioni() {
+		String[] direzioni = new String[this.numeroStanzeAdiacenti];
+	    for(int i=0; i<this.numeroStanzeAdiacenti; i++)
+	    	direzioni[i] = this.direzioni[i];
+	    return direzioni;
+    }
 
+	
+	public int getNumerosatnzeAdiacenti() {
+		return this.numeroStanzeAdiacenti;
+	}
     /**
      * Restituisce la nome della stanza.
      * @return il nome della stanza
@@ -173,8 +186,8 @@ public class Stanza {
 	
 		
 	/**
-	 * Rimuove un attrezzo dalla stanza (ricerca in base al nome).
-	 * @param nomeAttrezzo
+	 * Rimuove un attrezzo dalla stanza (ricerca in base al oggetto).
+	 * @param oggetto
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
 	public boolean removeAttrezzo(Attrezzo attrezzo) {
@@ -192,12 +205,7 @@ public class Stanza {
 	}
 
 
-	public String[] getDirezioni() {
-		String[] direzioni = new String[this.numeroStanzeAdiacenti];
-	    for(int i=0; i<this.numeroStanzeAdiacenti; i++)
-	    	direzioni[i] = this.direzioni[i];
-	    return direzioni;
-    }
+	
 
 }
 	

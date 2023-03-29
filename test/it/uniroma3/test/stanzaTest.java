@@ -11,32 +11,69 @@ import it.uniroma3.attrezzi.Attrezzo;
 
 
 public class stanzaTest {
+		
+	private Stanza stanza;
 	
-	private Stanza vuota;
-	private Stanza nonVuota;
 
 	@Before
 	public void setUp() {
-		this.vuota = new Stanza("Vuota");
+		this.stanza = new Stanza("Stanza");
 		
-		
-		
-		
+		Attrezzo osso = new Attrezzo("osso", 10);
+		this.stanza.addAttrezzo(osso);
+	
+	
 	}
 	
 	
 	@Test
-	public void hasAttrezzo() {
-		assertEquals("sai fare le somme?", 4, 2+2);
+	public void hasAttrezzoTest() {
+		assertTrue(this.stanza.hasAttrezzo("osso"));
 		
 	}
-	
-	@Test
-	public void addAttrezzo() {
-		
-		this.vuota.addAttrezzo(new Attrezzo("osso", 1));
-		assertTrue(this.vuota.hasAttrezzo("osso"));
 
+	@Test
+	public void hasAttrezzoFallitoTest() {
+		assertFalse(stanza.hasAttrezzo("sciabola"));
 	}
+	
+	
+	@Test
+	public void addAttrezzoTest() {
+		Attrezzo spada = new Attrezzo("spada",2);
+		this.stanza.addAttrezzo(spada);
+		assertTrue(this.stanza.hasAttrezzo("spada"));
+	}
+	
+	@Test
+	public void removeAttrezzoTest() {
+		Attrezzo osso = new Attrezzo("osso", 2); 
+		this.stanza.addAttrezzo(osso);
+		assertTrue(this.stanza.removeAttrezzo(osso));
+	}
+	
+	@Test
+	public void getStanzaAdiacenteTest() {
+		Stanza n11 = new Stanza("n11");
+		stanza.impostaStanzaAdiacente("nord", n11);
+		assertEquals(stanza.getStanzaAdiacente("nord").getNome(), n11.getNome());
+	}
+
+	@Test
+	public void impostaStanzaAdiacenteTest() {
+		Stanza n14 = new Stanza("n14");
+		stanza.impostaStanzaAdiacente("ovest", n14);
+		assertEquals(1,stanza.getNumerosatnzeAdiacenti());
+	}
+	
+	@Test
+	public void stanzaAdiacenteNonEsistenteTest() {
+		assertNull(stanza.getStanzaAdiacente("sud-est"));
+	}
+	
+	
+	
+	
+	
 }
 	

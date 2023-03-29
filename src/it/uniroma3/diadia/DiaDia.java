@@ -1,10 +1,13 @@
 package it.uniroma3.diadia;
 
-import java.util.Scanner;
+
+//TODO implementare mostra oggetti in borsa.
+
 
 import it.uniroma3.ambienti.Stanza;
 import it.uniroma3.attrezzi.Attrezzo;
 import it.uniroma3.giocatore.Borsa;
+import java.lang.StringBuilder;
 
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.
@@ -61,21 +64,17 @@ public class DiaDia {
 		else if(comandoDaEseguire.getNome().equals("prendi")) {
 			this.prendi(comandoDaEseguire.getParametro(), scanner);
 
-			
 		}
 		else if(comandoDaEseguire.getNome().equals("posa")) {
-			this.posa(comandoDaEseguire.getParametro(), scanner);
-
-			
-			
-			
+			this.posa(comandoDaEseguire.getParametro(), scanner);			
 		}
-		
+
 		else if (comandoDaEseguire.getNome().equals("fine")) {
 			this.fine(scanner); 
 			return true;
-			
-		} else if (comandoDaEseguire.getNome().equals("vai"))
+		}
+		
+		else if (comandoDaEseguire.getNome().equals("vai"))
 			this.vai(comandoDaEseguire.getParametro(),scanner);
 		
 		else if (comandoDaEseguire.getNome().equals("aiuto"))
@@ -98,13 +97,21 @@ public class DiaDia {
 	 * Stampa informazioni di aiuto.
 	 */
 	private void aiuto(IOConsole scanner) {
-		for(int i=0; i< elencoComandi.length; i++) 
-			scanner.mostraMessaggio(elencoComandi[i]+" ");
+			stringBuilder(scanner);
 		System.out.println();
 		}
 	
-	//implemantere stringbuilder
+	//implemantere stringbuilder per una stampa piu carina del comando aiuto
 	
+	public void stringBuilder(IOConsole scanner) {
+		
+		StringBuilder stringa = new StringBuilder();
+		for(int i=0; i<elencoComandi.length;i++) {
+			stringa.append(elencoComandi[i] + " ");
+		}
+		String output = stringa.toString();
+		scanner.mostraMessaggio(output);
+	}
 	
 	
 	private void prendi(String nomeAttrezzo, IOConsole scanner) {
@@ -113,21 +120,23 @@ public class DiaDia {
 		//poi cancellalo dalla stanza
 		
 		if(nomeAttrezzo == null) {
-			scanner.mostraMessaggio("Oggetto non valido!!");
+			scanner.mostraMessaggio("--| Oggetto non valido!! |--");
 		}
 		Borsa borsa = partita.getGiocatore().getBorsa();
 		
-		Stanza stanzaCorrente = partita.getLabirinto().getStanzaCorrente();
+		Stanza stanzaCorrente = partita.getStanzaCorrente();
 		
 		if(stanzaCorrente.hasAttrezzo(nomeAttrezzo)){
-			Attrezzo attrezzoCercato = partita.getLabirinto().getStanzaCorrente().getAttrezzo(nomeAttrezzo);
+			Attrezzo attrezzoCercato = partita.getStanzaCorrente().getAttrezzo(nomeAttrezzo);
 			
 			if(borsa.addAttrezzo(attrezzoCercato)) {
 				stanzaCorrente.removeAttrezzo(attrezzoCercato);
+				scanner.mostraMessaggio("--| Attrezzo preso! |--");
 			}
-			else scanner.mostraMessaggio("Non hai abbastanza spazio nella borsa!!");
+			else scanner.mostraMessaggio("--| Non hai abbastanza spazio nella borsa!! |--|\n--|Posa qualcosa dalla borsa e riprova!! |--");
 		}
-		else scanner.mostraMessaggio("L'attrezzo selezionato non esiste!!");
+		else scanner.mostraMessaggio("--| L'attrezzo selezionato non esiste!! |--\n--| Provane un altro!! |--");
+		
 	}
 		
 	
@@ -139,12 +148,12 @@ public class DiaDia {
 		//posalo e cacellalo dalla borsa
 		
 		if(nomeAttrezzo == null) {
-			scanner.mostraMessaggio("Oggetto non valido");
+			scanner.mostraMessaggio("--| Oggetto non valido |--\n");
 		}
 		
 		Borsa borsa = partita.getGiocatore().getBorsa();
 		
-		Stanza stanzaCorrente = partita.getLabirinto().getStanzaCorrente();
+		Stanza stanzaCorrente = partita.getStanzaCorrente();
 		
 		if(borsa.hasAttrezzo(nomeAttrezzo)) {
 			Attrezzo attrezzoCercato = partita.getGiocatore().getBorsa().getAttrezzo(nomeAttrezzo);
@@ -163,24 +172,24 @@ public class DiaDia {
 	 */
 	private void vai(String direzione, IOConsole scanner) {
 		if(direzione==null)
-			scanner.mostraMessaggio("Dove vuoi andare ?");
+			scanner.mostraMessaggio("--| Direzione non valida |--");
 		Stanza prossimaStanza = null;
-		prossimaStanza = this.partita.getLabirinto().getStanzaCorrente().getStanzaAdiacente(direzione);
+		prossimaStanza = this.partita.getStanzaCorrente().getStanzaAdiacente(direzione);
 		if (prossimaStanza == null)
-			scanner.mostraMessaggio("Direzione inesistente");
+			scanner.mostraMessaggio("--| Inserire un altra direzione |--");
 		else {
-			this.partita.getLabirinto().setStanzaCorrente(prossimaStanza);
+			this.partita.setStanzaCorrente(prossimaStanza);
 			int cfu = this.partita.getCFU();
 			this.partita.setCFU(cfu--);
 		}
-		scanner.mostraMessaggio(this.partita.getLabirinto().getStanzaCorrente().getDescrizione());
+		scanner.mostraMessaggio("\n" + this.partita.getStanzaCorrente().getDescrizione() + "\n" );
 	}
 
 	/**
 	 * Comando "Fine".
 	 */
 	private void fine(IOConsole scanner) {
-		scanner.mostraMessaggio("Grazie di aver giocato!");  // si desidera smettere
+		scanner.mostraMessaggio("-- | Grazie di aver giocato! |--");  // si desidera smettere
 	}
 
 	public static void main(String[] argc) {

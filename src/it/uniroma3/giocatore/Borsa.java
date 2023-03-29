@@ -1,6 +1,7 @@
 package it.uniroma3.giocatore;
 
 import it.uniroma3.attrezzi.Attrezzo;
+import it.uniroma3.diadia.IOConsole;
 
 public class Borsa {
 
@@ -79,7 +80,6 @@ public class Borsa {
 	}
 
 	
-		
 	
 	public boolean removeAttrezzo(Attrezzo attrezzo) {
 
@@ -107,6 +107,62 @@ public class Borsa {
 			s.append("Borsa vuota");
 			return s.toString();
 		}
+	
+	
+	//mostra gli ogggetti nella borsa
+	
+	public void mostraOgettiInBorsa(IOConsole scanner) {
+		
+		for(int i=0; i<numeroAttrezzi; i++) {
+			scanner.mostraMessaggio(attrezzi[i].toString());
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }
