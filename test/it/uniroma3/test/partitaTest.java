@@ -5,70 +5,74 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import it.uniroma3.ambienti.Labirinto;
 import it.uniroma3.ambienti.Stanza;
-import it.uniroma3.giocatore.Giocatore;
+import it.uniroma3.diadia.Partita;
+
 
 public class partitaTest {
 	
-	private boolean finita;
-	
-	private Labirinto labirinto;		
-	private Giocatore giocatore;
-	private Stanza stanzaCorrente;
-	
+	private Partita partita;
 	
 	@Before
 	public void setUp() {
-		labirinto = new Labirinto();
-		stanzaCorrente = labirinto.getStanzaIniziale();
-		giocatore = new Giocatore();
-		this.finita = false;
-		
-		
+		partita = new Partita();
 	}
 	
 	
 	
 	@Test
-	public void setFinitaTest() {
-		assertTrue(this.finita = true);
+	public void testIsFinitaGiocatoreCfu() {
+		partita.getGiocatore().setCFU(0);
+		assertTrue(partita.isFinita());
 	}
 	
 	@Test
-	public void nonFinitaTest() {
-		assertFalse(this.finita = false);
+	public void nonFinitaTestStanzaVincente() {
+		
+		partita.setStanzaCorrente(partita.getLabirinto().getStanzaVincente());		
+		assertTrue(partita.isFinita());
 	}
 
 	@Test
+	public void isFinitaFinita() {
+		partita.setFinita();
+		assertTrue(partita.isFinita());	
+	}
+	
+	@Test
+	public void isFinitaFalse() {
+		assertFalse(partita.isFinita());
+	}
+	
+	
+	@Test
 	public void getCfuTest() {
-		assertEquals(20, this.giocatore.getCFU());
+		assertEquals(20, this.partita.getGiocatore().getCFU());
 	}
 	
 	@Test
 	public void getCfuFinitiTest() {
-		this.giocatore.setCFU(0);
-		assertEquals(0,this.giocatore.getCFU());	
-	}
-	
-	
-	@Test
-	public void setCfuTest() {
-		this.giocatore.setCFU(10);
-		assertEquals(10,this.giocatore.getCFU());
+		this.partita.getGiocatore().setCFU(0);
+		assertEquals(0,this.partita.getGiocatore().getCFU());	
 	}
 	
 	
 	@Test
 	public void setStanzaCorrenteTest() {
-		assertEquals( "Atrio" , this.stanzaCorrente.getNome());
+		assertEquals( "Atrio" , this.partita.getStanzaCorrente().getNome());
 	}
 	
 	@Test
 	public void setStanzaCorrenteNuovaTest() {
 		Stanza Test = new Stanza("Test");
-		this.stanzaCorrente = Test;
-		assertEquals("Test", this.stanzaCorrente.getNome());
+		this.partita.setStanzaCorrente(Test);
+		assertEquals("Test", this.partita.getStanzaCorrente().getNome());
+	}
+	
+	@Test
+	public void setStanzaCorrenteNullTest() {
+		this.partita.setStanzaCorrente(null);
+		assertNull(this.partita.getStanzaCorrente());
 	}
 	
 	
