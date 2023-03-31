@@ -5,44 +5,65 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import it.uniroma3.ambienti.Labirinto;
 import it.uniroma3.ambienti.Stanza;
 import it.uniroma3.diadia.Partita;
+import it.uniroma3.giocatore.Giocatore;
 
 
 public class partitaTest {
 	
 	private Partita partita;
+
 	
 	@Before
 	public void setUp() {
 		partita = new Partita();
+		
 	}
 	
 	
 	
+	
+	//	Test per il isFinita
+	
+	
 	@Test
-	public void testIsFinitaGiocatoreCfu() {
+	public void IsFinitaGiocatoreCfuTest() {
 		partita.getGiocatore().setCFU(0);
 		assertTrue(partita.isFinita());
 	}
 	
 	@Test
-	public void nonFinitaTestStanzaVincente() {
-		
+	public void isFinitaStanzaVincenteTest() {
 		partita.setStanzaCorrente(partita.getLabirinto().getStanzaVincente());		
 		assertTrue(partita.isFinita());
 	}
 
 	@Test
-	public void isFinitaFinita() {
+	public void isFinitaFinitaTest() {
 		partita.setFinita();
 		assertTrue(partita.isFinita());	
 	}
 	
 	@Test
-	public void isFinitaFalse() {
+	public void isFinitaFalseTest() {
 		assertFalse(partita.isFinita());
 	}
+	
+	
+	
+	
+	//	Test per setCFU
+	
+	
+	//	I test per il set cfu sono la copia speculare dei test per
+	//	il getCFU periò inutili da riscrivere
+
+	
+	
+	
+	//	Test per il getCFU
 	
 	
 	@Test
@@ -57,10 +78,31 @@ public class partitaTest {
 	}
 	
 	
+	
+	
+	
+	//	 Test getStanzaCorrente
+
+	
 	@Test
-	public void setStanzaCorrenteTest() {
+	public void getStanzaCorrenteTest() {
 		assertEquals( "Atrio" , this.partita.getStanzaCorrente().getNome());
 	}
+	
+	@Test
+	public void getStanzaCorenteNuovaTest() {
+		Stanza n11 = new Stanza("n11");
+		partita.setStanzaCorrente(n11);
+		Stanza n12 = new Stanza("n12");
+		partita.setStanzaCorrente(n12);
+		assertEquals("n12", partita.getStanzaCorrente().getNome());
+	}
+	
+	
+	
+	
+	//	Test setStanzaCorrente
+	
 	
 	@Test
 	public void setStanzaCorrenteNuovaTest() {
@@ -73,6 +115,19 @@ public class partitaTest {
 	public void setStanzaCorrenteNullTest() {
 		this.partita.setStanzaCorrente(null);
 		assertNull(this.partita.getStanzaCorrente());
+	}
+	
+	
+	
+	
+	//	test per il setGiocatore
+	
+	
+	@Test
+	public void setGiocatoreTest() {
+		Giocatore giocatore2 = new Giocatore();
+		partita.setGiocatore(giocatore2);
+		assertEquals(giocatore2, partita.getGiocatore());
 	}
 	
 	
