@@ -98,6 +98,13 @@ public class partitaTest {
 		assertEquals("n12", partita.getStanzaCorrente().getNome());
 	}
 	
+	@Test
+	public void getStanzaCorrenteNull() {
+		Stanza vuota = null;
+		partita.setStanzaCorrente(vuota);
+		assertNull(partita.getStanzaCorrente());
+	}
+	
 	
 	
 	
@@ -130,6 +137,13 @@ public class partitaTest {
 		assertEquals(giocatore2, partita.getGiocatore());
 	}
 	
+	
+	@Test
+	public void setgiocatoreNullTest() {
+		Giocatore vuoto = null;
+		partita.setGiocatore(vuoto);
+		assertNull(partita.getGiocatore());
+	}
 	
 	
 	
