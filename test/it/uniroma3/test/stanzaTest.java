@@ -31,18 +31,18 @@ public class stanzaTest {
 	//test per il hasAttrezzo
 	
 	@Test
-	public void hasAttrezzoTest() {
+	public void testHasAttrezzo() {
 		assertTrue(this.stanza.hasAttrezzo("osso"));
 		
 	}
 
 	@Test
-	public void hasAttrezzoFallitoTest() {
+	public void testHasAttrezzoFallito() {
 		assertFalse(stanza.hasAttrezzo("sciabola"));
 	}
 	
 	@Test
-	public void hasAttrezzoNullTest() {
+	public void testHasAttrezzoNull() {
 		assertNull(stanza.getAttrezzo(null));	
 	}
 	
@@ -51,14 +51,14 @@ public class stanzaTest {
 	//test per il getAttrezzo
 	
 	@Test
-	public void addAttrezzoTest() {
+	public void testAddAttrezzo() {
 		Attrezzo spada = new Attrezzo("spada",2);
 		this.stanza.addAttrezzo(spada);
 		assertTrue(this.stanza.hasAttrezzo("spada"));
 	}
 	
 	@Test
-	public void addAtrezzoOverflowTest() {
+	public void testAddAtrezzoOverflow() {
 		for(int i = 0; i< MASSIMI_ATTREZZI; i++) {
 			Attrezzo Test = new Attrezzo("test", 1);
 			stanza.addAttrezzo(Test);
@@ -68,7 +68,7 @@ public class stanzaTest {
 	}
 	
 	@Test
-	public void addAttrezzoMultipliTest() {
+	public void testAddAttrezzoMultipli() {
 		Attrezzo test1 = new Attrezzo("test1", 1);
 		Attrezzo test2 = new Attrezzo("test2", 1);
 		stanza.addAttrezzo(test1);
@@ -83,7 +83,7 @@ public class stanzaTest {
 	//test per il removeAttrezzo
 	
 	@Test
-	public void removeAttrezzoTest() {
+	public void testRemoveAttrezzo() {
 		Attrezzo osso = new Attrezzo("osso", 2); 
 		this.stanza.addAttrezzo(osso);
 		assertTrue(this.stanza.removeAttrezzo(osso));
@@ -91,13 +91,13 @@ public class stanzaTest {
 	
 	
 	@Test
-	public void removeAttrezzoNonEsistenteTest() {
+	public void testRemoveAttrezzoNonEsistente() {
 		Attrezzo test = new Attrezzo("test",1);
 		assertFalse(stanza.removeAttrezzo(test));
 	}
 	
 	@Test
-	public void removeAttrezzoPiuDiUnoTest() {
+	public void testRemoveAttrezzoPiuDiUno() {
 		Attrezzo test1 = new Attrezzo("test1", 1);
 		Attrezzo test2 = new Attrezzo("test2", 1);
 		stanza.addAttrezzo(test1);
@@ -111,20 +111,20 @@ public class stanzaTest {
 	//test per il getStanzaAdiacente
 	
 	@Test
-	public void getStanzaAdiacenteTest() {
+	public void testGetStanzaAdiacente() {
 		Stanza n11 = new Stanza("n11");
 		stanza.impostaStanzaAdiacente("nord", n11);
 		assertEquals(stanza.getStanzaAdiacente("nord").getNome(), n11.getNome());
 	}
 
 	@Test
-	public void stanzaAdiacenteNonEsistenteTest() {
+	public void testGetStanzaAdiacenteNonEsistente() {
 		assertNull(stanza.getStanzaAdiacente("sud-est"));
 	}
 	
 	
 	@Test
-	public void stanzaAdiacenteCambiataTest() {
+	public void testGetStanzaAdiacenteCambiata2Volte() {
 		Stanza prima = new Stanza("prima");
 		stanza.impostaStanzaAdiacente("sud", prima);
 		Stanza seconda = new Stanza("seconda");
@@ -133,7 +133,7 @@ public class stanzaTest {
 	}
 	
 	@Test
-	public void stanzaAdiacenteSingolaTest() {
+	public void testGetStanzaAdiacenteSingola() {
 		Stanza adiacente = new Stanza("adiacente");
 		stanza.impostaStanzaAdiacente("sud", adiacente);
 	assertEquals(adiacente, stanza.getStanzaAdiacente("sud"));
@@ -148,7 +148,7 @@ public class stanzaTest {
 	
 	
 	@Test
-	public void impostaStanzaAdiacenteTest() {
+	public void testImpostaStanzaAdiacente() {
 		Stanza n14 = new Stanza("n14");
 		stanza.impostaStanzaAdiacente("ovest", n14);
 		assertEquals(1,stanza.getNumerosatnzeAdiacenti());
@@ -157,14 +157,11 @@ public class stanzaTest {
 	
 	
 	
-	
-	
-	
 	//Test per il getDirezioni
 	
 	
 	@Test
-	public void getDirezioniTest() {
+	public void testGetDirezioni() {
 		Stanza atrio = new Stanza("atrio");
 		stanza.impostaStanzaAdiacente("sud", atrio);
 		String[] direzioni = new String[1];
@@ -173,7 +170,7 @@ public class stanzaTest {
 	}
 	
 	@Test
-	public void getDirezioniMultipleTest() {
+	public void testGetDirezioniMultiple() {
 		Stanza atrio = new Stanza("atrio");
 		Stanza n11 = new Stanza("n11");
 		stanza.impostaStanzaAdiacente("sud", atrio);
@@ -185,7 +182,7 @@ public class stanzaTest {
 	}
 	
 	@Test
-	public void getDirezioniMassimeTest() {
+	public void testGetDirezioniMassime() {
 		Stanza atrio = new Stanza("atrio");
 		Stanza n11 = new Stanza("n11");
 		Stanza n12 = new Stanza("n12");
