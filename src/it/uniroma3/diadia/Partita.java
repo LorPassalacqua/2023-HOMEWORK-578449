@@ -81,6 +81,13 @@ public class Partita {
 	public Stanza getStanzaCorrente() {
 		return this.stanzaCorrente;
 	}
+
+	public boolean giocatoreIsVivo() {
+		if(this.giocatore.getCFU()>0) {
+			return true;
+		}
+		return false;
+	}
 	
 	
 	

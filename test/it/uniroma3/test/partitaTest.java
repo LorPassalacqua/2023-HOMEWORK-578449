@@ -1,11 +1,12 @@
 package it.uniroma3.test;
 
-import static org.junit.Assert.*;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-import it.uniroma3.ambienti.Labirinto;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+
 import it.uniroma3.ambienti.Stanza;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.giocatore.Giocatore;
@@ -16,7 +17,7 @@ public class partitaTest {
 	private Partita partita;
 
 	
-	@Before
+	@BeforeEach
 	public void setUp() {
 		partita = new Partita();
 		
