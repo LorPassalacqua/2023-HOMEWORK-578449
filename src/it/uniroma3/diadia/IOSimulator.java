@@ -2,7 +2,7 @@ package it.uniroma3.diadia;
 
 public class IOSimulator implements Io{
 
-	
+	String[] comandi = {"vai", "sud"};
 	
 	/**
 	 * consentirà di conoscere i messaggi
@@ -20,8 +20,6 @@ public class IOSimulator implements Io{
 	}
 
 	
-	
-	
 	/**
 	 * consentirà di “iniettare” le righe che
 	 * desideriamo far figurare come istruzioni
@@ -31,7 +29,7 @@ public class IOSimulator implements Io{
 	@Override
 	public String leggiRiga() {
 		
-
+		
 		
 		
 		return null;

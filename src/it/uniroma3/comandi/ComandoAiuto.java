@@ -13,7 +13,7 @@ public class ComandoAiuto implements Comando{
 	
 		StringBuilder stringa = new StringBuilder();
 		for(int i=0; i<elencoComandi.length; i++) {
-			stringa.append("<<" + elencoComandi[i] +">> " );
+			stringa.append("<" + elencoComandi[i] +">  " );
 		}
 		String output = stringa.toString();
 		io.mostraMessaggio("--| Ecco i comandi disponibili |--");
