@@ -24,6 +24,8 @@ class stanzaBuiaTest {
 	}
 	
 	
+	
+	
 	@Test
 	public void testEntroSensaChiave() {
 		assertEquals("--| qui c'è buio pesto |--", buia.getDescrizione());

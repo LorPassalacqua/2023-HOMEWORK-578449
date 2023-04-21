@@ -19,15 +19,46 @@ final static private int SOGLIA_MAGICA_DEFAULT = 3;
 		this.sogliaMagica = soglia;
 	}
 	
+	
+	//in protected va aggiunto l'attrezzo a mano.
+	
+	
+	//public boolean addAttrezzo2(Attrezzo attrezzo) {
+		
+	//	if(this.contatoreAttrezziPosati< this.sogliaMagica) {
+	//		this.contatoreAttrezziPosati++;
+	//	}
+	//		attrezzo = modificaAttrezzo(attrezzo);
+		
+	//		if(this.numeroAttrezzi < NUMERO_MASSIMO_ATTREZZI) {
+	//			this.attrezzi[numeroAttrezzi] = attrezzo;
+	//			this.numeroAttrezzi++;
+	//		}
+	//		return false;
+	//}
+	
+	
 	@Override
 	public boolean addAttrezzo(Attrezzo attrezzo) {
+	
+		if(this.numeroAttrezzi < NUMERO_MASSIMO_ATTREZZI) {
+			
+			if(this.contatoreAttrezziPosati< this.sogliaMagica) {
+				this.contatoreAttrezziPosati++;
+			}
+			else {
+				attrezzo = modificaAttrezzo(attrezzo);
+			}
+			this.attrezzi[numeroAttrezzi] = attrezzo;
+			this.numeroAttrezzi++;
+			return true;
+		}
 		
-		this.contatoreAttrezziPosati++;
-		if (this.contatoreAttrezziPosati>this.sogliaMagica)
-			attrezzo = this.modificaAttrezzo(attrezzo);
-		return super.addAttrezzo(attrezzo);
-		
+	
+		return false;
 	}
+	
+	
 
 	private Attrezzo modificaAttrezzo(Attrezzo attrezzo) {
 		

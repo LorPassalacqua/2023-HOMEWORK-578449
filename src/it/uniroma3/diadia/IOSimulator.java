@@ -2,7 +2,18 @@ package it.uniroma3.diadia;
 
 public class IOSimulator implements Io{
 
-	String[] comandi = {"vai", "sud"};
+	private String[] comandiLetti;
+	private int indiceProxComando;
+	
+	
+	//il costruttore di IOSimulator crea l'array di comandi
+	
+	public IOSimulator(String... comandiLetti) {
+		this.comandiLetti = comandiLetti;
+		this.indiceProxComando = 0;
+	}
+
+	
 	
 	/**
 	 * consentirà di conoscere i messaggi
@@ -12,7 +23,7 @@ public class IOSimulator implements Io{
 	
 	@Override
 	public void mostraMessaggio(String msg) {
-		
+		System.out.println(msg);
 		
 		
 		
@@ -28,11 +39,11 @@ public class IOSimulator implements Io{
 	
 	@Override
 	public String leggiRiga() {
+		if(this.comandiLetti.length == 0) return null;
 		
+		if(this.indiceProxComando >= this.comandiLetti.length) return null;
 		
-		
-		
-		return null;
+		return this.comandiLetti[this.indiceProxComando++];
 	}
 
 }
