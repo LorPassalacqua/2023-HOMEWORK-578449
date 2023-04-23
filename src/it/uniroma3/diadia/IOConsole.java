@@ -2,7 +2,7 @@ package it.uniroma3.diadia;
 import java.util.Scanner;
 
 
-public class IOConsole implements Io{
+public class IOConsole implements IO{
 	
 	
 	public void mostraMessaggio(String msg) {

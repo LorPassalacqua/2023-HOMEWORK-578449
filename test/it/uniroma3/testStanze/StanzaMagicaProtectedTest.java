@@ -1,4 +1,4 @@
-package it.uniroma3.test;
+package it.uniroma3.testStanze;
 
 import static org.junit.jupiter.api.Assertions.*;
 

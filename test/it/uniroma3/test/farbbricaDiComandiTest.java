@@ -96,14 +96,14 @@ class farbbricaDiComandiTest{
 	}
 	
 	@Test
-	public void testCoamndovai() {
+	public void testCoamndoVaiNullo() {
 		String istruzione = "vai";
 		Comando output = factory.costruisciComando(istruzione);
 		assertEquals("comandoVai", output.getNome());
 	}
 	
 	@Test
-	public void testCoamndovaiDirezione() {
+	public void testCoamndoVaiDirezione() {
 		String istruzione = "vai sud";
 		Comando output = factory.costruisciComando(istruzione);
 		assertEquals("comandoVai", output.getNome());

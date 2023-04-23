@@ -1,6 +1,6 @@
 package it.uniroma3.diadia;
 
-public interface Io {
+public interface IO {
 
 	public void mostraMessaggio(String msg);
 	

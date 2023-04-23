@@ -1,6 +1,6 @@
 package it.uniroma3.diadia;
 
-public class IOSimulator implements Io{
+public class IOSimulator implements IO{
 
 	private String[] comandiLetti;
 	private int indiceProxComando;
@@ -12,8 +12,6 @@ public class IOSimulator implements Io{
 		this.comandiLetti = comandiLetti;
 		this.indiceProxComando = 0;
 	}
-
-	
 	
 	/**
 	 * consentirà di conoscere i messaggi
@@ -23,11 +21,7 @@ public class IOSimulator implements Io{
 	
 	@Override
 	public void mostraMessaggio(String msg) {
-		System.out.println(msg);
-		
-		
-		
-		
+		System.out.println(msg);	
 	}
 
 	

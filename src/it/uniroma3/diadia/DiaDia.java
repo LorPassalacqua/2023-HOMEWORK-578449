@@ -33,11 +33,11 @@ public class DiaDia {
 
 	private Partita partita;
 
-	public DiaDia(Io io) {
+	public DiaDia(IO io) {
 		this.partita = new Partita();
 	}
 
-	public void gioca(Io io) {
+	public void gioca(IO io) {
 		String istruzione; 
 		io.mostraMessaggio(MESSAGGIO_BENVENUTO);
 		do		
@@ -52,7 +52,7 @@ public class DiaDia {
 	 * @return true se l'istruzione e' eseguita e il gioco continua, false altrimenti
 	 */
 
-	private boolean processaIstruzione(String istruzione,Io io) {
+	private boolean processaIstruzione(String istruzione,IO io) {
 		Comando comandoDaEseguire;
 		FabbricaDiComandi factory = new FabbricaDiComandiFisarmonica();
 				comandoDaEseguire = factory.costruisciComando(istruzione);
@@ -70,8 +70,8 @@ public class DiaDia {
 	
 	
 	public static void main(String[] argc) {
-		Io io = new IOConsole();
-		DiaDia gioco = new DiaDia(io);		//implementare scanner
+		IO io = new IOConsole();
+		DiaDia gioco = new DiaDia(io);		
 		gioco.gioca(io);
 	}
 

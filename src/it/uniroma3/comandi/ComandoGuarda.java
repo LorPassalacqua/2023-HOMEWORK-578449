@@ -2,7 +2,7 @@ package it.uniroma3.comandi;
 
 
 import it.uniroma3.diadia.Comando;
-import it.uniroma3.diadia.Io;
+import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.Partita;
 
 
@@ -13,7 +13,7 @@ public class ComandoGuarda implements Comando{
 		
 		
 	@Override
-	public void esegui(Partita partita, Io io) {
+	public void esegui(Partita partita, IO io) {
 		if(cosa == null) {
 			io.mostraMessaggio("--| La Cosa o la Stanza selezionata non è visualizzabile!! |--");
 		}

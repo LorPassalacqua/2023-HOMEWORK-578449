@@ -2,7 +2,7 @@ package it.uniroma3.comandi;
 
 import it.uniroma3.ambienti.Stanza;
 import it.uniroma3.diadia.Comando;
-import it.uniroma3.diadia.Io;
+import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.Partita;
 
 public class ComandoVai implements Comando{
@@ -11,7 +11,7 @@ public class ComandoVai implements Comando{
 	
 	
 	@Override
-	public void esegui(Partita partita, Io io) {
+	public void esegui(Partita partita, IO io) {
 		
 		Stanza stanzaCorrente = partita.getStanzaCorrente();
 		Stanza prossimaStanza = null;

@@ -1,4 +1,4 @@
-package it.uniroma3.test;
+package it.uniroma3.testStanze;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -58,6 +58,12 @@ class stanzaMagicaTest {
 		assertEquals(1, test.getAttrezzo("spada").getPeso());
 	}
 	
+	@Test
+	public void testStanzaPiena() {
+		aggiungiMaxStanza(test, lanterna);
+		assertFalse(test.addAttrezzo(spada));
+	}
+	
 	
 	public void aggiungiMaxStanza(Stanza stanza, Attrezzo attrezzo) {
 		for(int i=0 ; i<NUMERO_MAX_IN_STANZA; i++) {
@@ -73,7 +79,6 @@ class stanzaMagicaTest {
 		}
 	}
 	
-	//TODO implementare altri test per non invertito/invertito
-	// peso raddoppiato e non raddoppiato
+	
 	
 }

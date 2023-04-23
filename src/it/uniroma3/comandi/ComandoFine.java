@@ -1,14 +1,14 @@
 package it.uniroma3.comandi;
 
 import it.uniroma3.diadia.Comando;
-import it.uniroma3.diadia.Io;
+import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.Partita;
 
 
 public class ComandoFine implements Comando{
 	
 	@Override
-	public void esegui(Partita partita, Io io) {
+	public void esegui(Partita partita, IO io) {
 		partita.setFinita();
 		io.mostraMessaggio("--| Grazie di aver Giocato!! |--");
 	}

@@ -3,7 +3,7 @@ package it.uniroma3.comandi;
 import it.uniroma3.ambienti.Stanza;
 import it.uniroma3.attrezzi.Attrezzo;
 import it.uniroma3.diadia.Comando;
-import it.uniroma3.diadia.Io;
+import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.giocatore.Borsa;
 
@@ -13,7 +13,7 @@ public class ComandoPrendi implements Comando{
 	private String nomeAttrezzo;
 	
 	@Override
-	public void esegui(Partita partita, Io io) {
+	public void esegui(Partita partita, IO io) {
 	
 		if(nomeAttrezzo == null) {
 			io.mostraMessaggio("--| Oggetto non Valido |--");
