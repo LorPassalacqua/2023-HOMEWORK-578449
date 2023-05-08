@@ -13,7 +13,7 @@ import it.uniroma3.ambienti.Stanza;
  * @see Stanza
  * @version base
  */
-public class Attrezzo {
+public class Attrezzo implements Comparable<Attrezzo>{
 
 	private String nome;
 	private int peso;
@@ -48,8 +48,10 @@ public class Attrezzo {
 	 * Restituisce una rappresentazione stringa di questo attrezzo
 	 * @return la rappresentazione stringa
 	 */
+
+	@Override
 	public String toString() {
-		return this.getNome()+" ("+this.getPeso()+"kg),";
+		return this.getNome()+" ("+this.getPeso()+"kg)";
 	}
 	
 	@Override
@@ -59,4 +61,66 @@ public class Attrezzo {
 		return this.getNome().equals(that.getNome()) && this.getPeso() == that.getPeso();
 	}
 
+	
+	@Override
+	public int hashCode() {
+		return nome.hashCode() + peso;
+	}
+	
+	
+	//TODO implementare la comparazione che va fatta prima tramite il peso poi con il nome else return differenza peso.
+	// da cambiare facendogli 
+	
+	//@Override
+	//public int compareTo(Attrezzo o) {
+	//	if(this.getPeso() == o.getPeso())
+	//		return this.getNome().compareTo(o.getNome());
+	//	return this.getPeso() - o.getPeso();
+	//}
+	
+	
+	@Override
+	public int compareTo(Attrezzo o) {
+		if(this.getNome().equals(o.getNome())) {
+			return this.getPeso() - o.getPeso();
+		}
+		return this.getNome().compareTo(o.getNome());
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

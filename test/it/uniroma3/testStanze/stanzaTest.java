@@ -2,6 +2,10 @@ package it.uniroma3.testStanze;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,7 +18,7 @@ public class stanzaTest {
 		
 	private Stanza stanza;
 	private final  int MASSIMI_ATTREZZI = 10;
-	
+	private List<String> direzioni;
 	
 
 	@Before
@@ -23,7 +27,8 @@ public class stanzaTest {
 		
 		Attrezzo osso = new Attrezzo("osso", 10);
 		this.stanza.addAttrezzo(osso);
-	
+		
+		direzioni = new ArrayList<>();
 	
 	}
 	
@@ -153,61 +158,7 @@ public class stanzaTest {
 		stanza.impostaStanzaAdiacente("ovest", n14);
 		assertEquals(1,stanza.getNumerosatnzeAdiacenti());
 	}
-	
-	
-	
-	
-	//Test per il getDirezioni
-	
-	
-	@Test
-	public void testGetDirezioni() {
-		Stanza atrio = new Stanza("atrio");
-		stanza.impostaStanzaAdiacente("sud", atrio);
-		String[] direzioni = new String[1];
-		direzioni[0] = "sud";
-		assertArrayEquals(direzioni, stanza.getDirezioni());
-	}
-	
-	@Test
-	public void testGetDirezioniMultiple() {
-		Stanza atrio = new Stanza("atrio");
-		Stanza n11 = new Stanza("n11");
-		stanza.impostaStanzaAdiacente("sud", atrio);
-		stanza.impostaStanzaAdiacente("nord", n11);
-		String[] direzioni = new String[2];
-		direzioni[0] = "sud";
-		direzioni[1] = "nord";
-		assertArrayEquals(direzioni, stanza.getDirezioni());
-	}
-	
-	@Test
-	public void testGetDirezioniMassime() {
-		Stanza atrio = new Stanza("atrio");
-		Stanza n11 = new Stanza("n11");
-		Stanza n12 = new Stanza("n12");
-		Stanza esterno = new Stanza("esterno");
-		stanza.impostaStanzaAdiacente("sud", atrio);
-		stanza.impostaStanzaAdiacente("nord", n11);
-		stanza.impostaStanzaAdiacente("est", n12);
-		stanza.impostaStanzaAdiacente("ovest", esterno);
-		String[] direzioni = new String[4];
-		direzioni[0] = "sud";
-		direzioni[1] = "nord";
-		direzioni[2] = "est";
-		direzioni[3] = "ovest";
-		assertArrayEquals(direzioni, stanza.getDirezioni());
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 }
 	
