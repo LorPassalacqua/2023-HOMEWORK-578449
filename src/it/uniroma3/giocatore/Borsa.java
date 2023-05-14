@@ -18,7 +18,7 @@ import it.uniroma3.diadia.IOConsole;
 
 public class Borsa {
 	
-	public final static int DEFAULT_PESO_MAX_BORSA = 100;
+	public final static int DEFAULT_PESO_MAX_BORSA = 10;
 		
 	private Map<String, Attrezzo> attrezzi;
 	private int pesoTotOggetti;

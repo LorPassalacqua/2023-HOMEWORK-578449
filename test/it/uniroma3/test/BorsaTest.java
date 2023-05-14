@@ -32,10 +32,10 @@ class BorsaTest {
 	public void setUp() {
 		borsa = new Borsa();
 		
-		Libro = new Attrezzo("Libro",5);
-		Piombo = new Attrezzo("Piombo",10);
+		Libro = new Attrezzo("Libro",2);
+		Piombo = new Attrezzo("Piombo",4);
 		Piuma = new Attrezzo("Piuma",1);
-		ps = new Attrezzo("Ps",5);
+		ps = new Attrezzo("Ps",2);
 
 		borsa.addAttrezzo(Libro);
 		borsa.addAttrezzo(Piombo);
@@ -50,7 +50,7 @@ class BorsaTest {
 	//	{ libro, piombo, piuma, ps }   NOME
 	
 	@Test
-	void testSet() {
+	void testSetPerNome() {
 		SortedSet<Attrezzo> borsa2 = new TreeSet<>();
 		
 		borsa2.add(Libro);
@@ -68,7 +68,7 @@ class BorsaTest {
 	//	[ piuma, libro, ps, piombo ]  PESo
 	
 	@Test
-	void testSortedLista() {
+	void testSortedListaPerPeso() {
 		List<Attrezzo> ordinato = new LinkedList<>();
 		
 		ordinato.add(Piuma);
@@ -89,7 +89,7 @@ class BorsaTest {
 	//TODO controllare collisione in mappa per stampa 
 	
 	@Test
-	void testMap() {
+	void testMapPerPeso() {
 		Map<Integer, Set<Attrezzo>> ordinato = new HashMap<>();
 		
 		Set<Attrezzo> set1 = new HashSet<>();
@@ -99,11 +99,11 @@ class BorsaTest {
 		Set<Attrezzo> set2 = new HashSet<>();
 		set2.add(Libro);
 		set2.add(ps);
-		ordinato.put(5, set2);
+		ordinato.put(2, set2);
 		
 		Set<Attrezzo> set3 = new HashSet<>();
 		set3.add(Piombo);
-		ordinato.put(10, set3);
+		ordinato.put(4, set3);
 		
 		assertEquals(ordinato,borsa.getContenutoRaggruppatoPerPeso());
 	}
@@ -111,7 +111,7 @@ class BorsaTest {
 	
 	
 	@Test
-	void testSortedSet() {
+	void testSortedSetPerPeso() {
 		SortedSet<Attrezzo> ordinato = new TreeSet<>();
 		
 		ordinato.add(Piuma);
