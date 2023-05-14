@@ -1,24 +1,27 @@
 package it.uniroma3.test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.Set;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import it.uniroma3.comandi.FabbricaDiComandiFisarmonica;
+import it.uniroma3.comandi.ComandoFine;
+import it.uniroma3.comandi.ComandoNonValido;
+import it.uniroma3.comandi.ComandoVai;
 import it.uniroma3.comandi.FabbricaDiComandi;
+import it.uniroma3.comandi.FabbricaDiComandiFisarmonica;
 import it.uniroma3.diadia.Comando;
 
 
-class farbbricaDiComandiTest{
+class FarbbricaDiComandiTest{
 	
 	FabbricaDiComandi factory;
+	private Comando expected;
 	
 	@BeforeEach
 	public void setUp() {
 		factory = new FabbricaDiComandiFisarmonica();
+		
 	}
 	
 	@Test
@@ -109,6 +112,28 @@ class farbbricaDiComandiTest{
 		assertEquals("comandoVai", output.getNome());
 		assertEquals("sud", output.getParametro());
 	}
+	
+	@Test
+	public void testComandoNonValido() {
+		expected = new ComandoNonValido();
+		assertEquals( expected.getNome(), factory.costruisciComando("pippo").getNome());
+	}
+	
+	@Test
+	public void testComandoConParametro() {
+		expected = new ComandoVai();
+		expected.setParametro("nord");
+		Comando current = factory.costruisciComando("vai nord");
+		assertEquals( expected.getNome(), current.getNome());
+		assertEquals( expected.getParametro(), current.getParametro());
+	}
+	
+	@Test
+	public void testComandoSenzaParametro() {
+		expected = new ComandoFine();
+		assertEquals( expected.getNome(), factory.costruisciComando("fine").getNome());
+	}
+	
 	
 }
 

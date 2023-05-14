@@ -1,6 +1,9 @@
 package it.uniroma3.ambienti;
 
+
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import it.uniroma3.attrezzi.Attrezzo;
 
@@ -29,6 +32,8 @@ public class Stanza {
     private Map<String,Stanza> stanzeAdiacenti;
     
        
+    private List<String> direzioni;
+    
     /**
      * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
      * @param nome il nome della stanza
@@ -36,6 +41,7 @@ public class Stanza {
     public Stanza(String nome) {
         this.nome = nome;
         
+        this.direzioni = new LinkedList<>();
         this.attrezzi = new HashMap<>();
         this.stanzeAdiacenti = new HashMap<>();
     }
@@ -48,8 +54,7 @@ public class Stanza {
      */
     public void impostaStanzaAdiacente(String direzione, Stanza stanza) {
         if(stanzeAdiacenti.size() < NUMERO_MASSIMO_DIREZIONI) {
-        	this.stanzeAdiacenti.put(direzione, stanza);
-        	
+        	this.stanzeAdiacenti.put(direzione, stanza);        	
         }
     }
 
@@ -89,7 +94,20 @@ public class Stanza {
         return this.attrezzi;
     }
     
-    public Map<String,Stanza> getStanzeAdiacenti(){
+    public List<Attrezzo> getAttrezziList(){
+    	List<Attrezzo> output = new LinkedList<>();
+    	output.addAll(attrezzi.values());
+    	return output;
+    }
+    
+    
+    public List<Attrezzo> getListaAttrezzi(){
+    	List<Attrezzo> output = new LinkedList<>();
+    	output.addAll(attrezzi.values());
+    	return output;
+    }
+    
+    public Map<String,Stanza> getMapStanzeAdiacenti(){
     	return this.stanzeAdiacenti;
     }
 
@@ -99,7 +117,11 @@ public class Stanza {
      * @return true se riesce ad aggiungere l'attrezzo, false atrimenti.
      */
     public boolean addAttrezzo(Attrezzo attrezzo) {	
-        return this.attrezzi.put(attrezzo.getNome(),attrezzo) != null;
+    	if(attrezzo != null) {
+    		this.attrezzi.put(attrezzo.getNome(),attrezzo);
+    		return true;
+    	}
+    	return false;
     }
 
    /**
@@ -156,17 +178,12 @@ public class Stanza {
 	}
 	
 	
-	@Override
-	public boolean equals (Object object) {
-		
-		Stanza that = (Stanza) object;
-		
-		if( that == null) return false;
-		
-		return this.getNome().equals(that.getNome()) &&
-			   this.getAttrezzi().equals(that.getAttrezzi()) &&
-			   this.getStanzeAdiacenti().equals(that.getStanzeAdiacenti());
+
+	public List<String> getDirezioni(){
+		direzioni.addAll(stanzeAdiacenti.keySet());
+		return direzioni;
 	}
+	
 	
 	
 	@Override
@@ -176,6 +193,14 @@ public class Stanza {
 	
 	
 	
+	@Override
+	public boolean equals(Object o) {
+		Stanza that = (Stanza) o;
+		if(that == null || this.getClass() != that.getClass()) return false;
+		return  this.getNome().equals(that.getNome()) && 
+				this.getAttrezzi().equals(that.getAttrezzi()) &&
+				this.getDirezioni().equals(that.getDirezioni());
+	}
 	
 
 }

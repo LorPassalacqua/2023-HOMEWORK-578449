@@ -1,25 +1,41 @@
 package it.uniroma3.comandi;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import it.uniroma3.diadia.Comando;
 import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.Partita;
 
 public class ComandoAiuto implements Comando{
 	
-	private String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa", "guarda"};
+	private List<String> elencoComandi;
+	private String intro;
+	
+	
+	public ComandoAiuto() {
+		elencoComandi = new LinkedList<>();
+		elencoComandi.add("vai");
+		elencoComandi.add("aiuto");
+		elencoComandi.add("fine");
+		elencoComandi.add("prendi");
+		elencoComandi.add("posa");
+		elencoComandi.add("guarda");
+		intro = "--| Ecco i comandi disponibili |--";
+	}
+	
 	
 	@Override
 	public void esegui(Partita partita, IO io) {
 	
 		StringBuilder stringa = new StringBuilder();
-		for(int i=0; i<elencoComandi.length; i++) {
-			stringa.append("<" + elencoComandi[i] +">  " );
+		for(String comando: elencoComandi) {
+			stringa.append("<" + comando +"> " );
 		}
 		String output = stringa.toString();
-		io.mostraMessaggio("--| Ecco i comandi disponibili |--");
+		io.mostraMessaggio(intro);
 		io.mostraMessaggio(output);
 	}
-	
 	
 	
 	@Override
@@ -35,5 +51,13 @@ public class ComandoAiuto implements Comando{
 	@Override
 	public String getParametro() {
 		return null;
+	}
+	
+	public List<String> getListaComandi(){
+		return elencoComandi;
+	}
+	
+	public String getIntro() {
+		return this.intro;
 	}
 }

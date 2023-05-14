@@ -2,7 +2,6 @@ package it.uniroma3.giocatore;
 
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -18,13 +17,15 @@ import it.uniroma3.attrezzi.ComparatoreOggetti;
 import it.uniroma3.diadia.IOConsole;
 
 public class Borsa {
-
 	
 	public final static int DEFAULT_PESO_MAX_BORSA = 100;
 		
-		private Map<String, Attrezzo> attrezzi;
-		private int pesoTotOggetti;
+	private Map<String, Attrezzo> attrezzi;
+	private int pesoTotOggetti;
 	
+		
+		
+		
 	public Borsa() {
 		this.attrezzi = new HashMap<>();
 		this.pesoTotOggetti = 0;
@@ -66,7 +67,11 @@ public class Borsa {
 
 	
 	public boolean removeAttrezzo(Attrezzo attrezzo) {
-		return this.removeAttrezzo(attrezzo);
+		if(attrezzo != null) {
+			attrezzi.remove(attrezzo.getNome());
+			return true;
+		}
+		return false;
 	}
 		
 	
@@ -110,7 +115,6 @@ public class Borsa {
 	}
 	
 	
-	// TODO controllare che sia stato cambiato il comapre to in attrezzo.
 	
 	public SortedSet<Attrezzo> getContenutoOrdinatoPerNome(){
 		SortedSet<Attrezzo> ordinato = new TreeSet<>(attrezzi.values());
@@ -118,7 +122,7 @@ public class Borsa {
 	}
 	
 	
-	//TODO mappa di mappe che vengono raggruppate se il peso degli oggetti sono uguali.
+	// mappa di mappe che vengono raggruppate se il peso degli oggetti sono uguali.
 	// non serve il comaratore perche non e ordinato
 	
 	
@@ -130,7 +134,7 @@ public class Borsa {
 	//	se esiste la aggiungo alla sezione gia esistente.
 	
 	
-	//TODO controllare collisione in mappa per stampa
+	// controllare collisione in mappa per stampa
 	
 	
 	public Map<Integer,Set<Attrezzo>> getContenutoRaggruppatoPerPeso(){
@@ -155,6 +159,7 @@ public class Borsa {
 				Set<Attrezzo> nuovoSet = new HashSet<>();
 				nuovoSet.add(attr);
 				map.put(attr.getPeso(), nuovoSet);
+				
 			}
 			
 		}
@@ -182,7 +187,7 @@ public class Borsa {
 	
 	
 	
-	
+
 	
 	
 	

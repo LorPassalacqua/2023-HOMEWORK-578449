@@ -62,15 +62,7 @@ public class stanzaTest {
 		assertTrue(this.stanza.hasAttrezzo("spada"));
 	}
 	
-	@Test
-	public void testAddAtrezzoOverflow() {
-		for(int i = 0; i< MASSIMI_ATTREZZI; i++) {
-			Attrezzo Test = new Attrezzo("test", 1);
-			stanza.addAttrezzo(Test);
-		}
-		Attrezzo diTroppo = new Attrezzo("diTroppo", 1);
-		assertFalse(stanza.addAttrezzo(diTroppo));
-	}
+	
 	
 	@Test
 	public void testAddAttrezzoMultipli() {

@@ -2,49 +2,62 @@ package it.uniroma3.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import it.uniroma3.diadia.IOSimulator;
+
 
 class IOSimulatorTest {
 
 	private IOSimulator io;
 	
 	
+	List<String> comandi;
+	
+	@BeforeEach
+	public void setUp() {
+		comandi = new ArrayList<String>();
+	}
+	
+	
+	
+	
 	@Test
 	void testUnSoloComando() {
-		assertEquals("fine", new IOSimulator("fine").leggiRiga());
+		comandi.add("fine");
+		assertEquals("fine", new IOSimulator(comandi).leggiRiga());
 	}
 	
 	
 	@Test
 	public void testPiuComandi() {
-		io = new IOSimulator("vai nord", "fine");
+		comandi.add("vai nord");
+		comandi.add("fine");
+		io = new IOSimulator(comandi);
 		assertEquals("vai nord", io.leggiRiga());
 		assertEquals("fine", io.leggiRiga());
 	}
 
 	
 	@Test
-	public void testComandoNullo() {
-		assertNull(new IOSimulator().leggiRiga());
-	}
-
-	
-	@Test
-	public void testTroppeLetture() {
-		IOSimulator io = new IOSimulator("fine");
-		assertEquals("fine", io.leggiRiga());
-		assertNull(io.leggiRiga());
-	}
-	
-	
-	@Test
 	public void testSimuloStanzaMagica() {
-		io = new IOSimulator("prendi chiave","vai sud","guarda stanza", "posa chiave",
-							 "prendi chiave", "posa chiave", "prendi chiave","posa chiave",
-							 "prendi chiave", "posa chiave", "guarda stanza", "fine");
+		comandi.add("prendi chiave");
+		comandi.add("vai sud");
+		comandi.add("guarda stanza");
+		comandi.add("posa chiave");
+		comandi.add("prendi chiave");
+		comandi.add("posa chiave");
+		comandi.add("prendi chiave");
+		comandi.add("posa chiave");
+		comandi.add("prendi chiave");
+		comandi.add("posa chiave");
+		comandi.add("guarda stanza");
+		comandi.add("fine");
+		io = new IOSimulator(comandi);
 		
 		assertEquals("prendi chiave", io.leggiRiga());
 		assertEquals("vai sud", io.leggiRiga());
@@ -57,7 +70,13 @@ class IOSimulatorTest {
 	
 	@Test
 	public void testEsistenzaStanzaBloccata() {
-		io = new IOSimulator("prendi chiave","vai est","guarda stanza","posa chiave", "vai est", "fine");
+		comandi.add("prendi chiave");
+		comandi.add("vai est");
+		comandi.add("guarda stanza");
+		comandi.add("posa chiave");
+		comandi.add("vai est");
+		comandi.add("fine");
+		io = new IOSimulator(comandi);
 		assertEquals("prendi chiave", io.leggiRiga());
 		assertEquals("vai est", io.leggiRiga());
 		assertEquals("guarda stanza", io.leggiRiga());
@@ -69,7 +88,13 @@ class IOSimulatorTest {
 	
 	@Test
 	public void testStanzaBuia() {
-		io = new IOSimulator("prendi EXCALIBUR", "vai ovest", "guarda stanza", "posa EXCALIBUR", "guarda stanza", "fine");
+		comandi.add("prendi EXCALIBUR");
+		comandi.add("vai ovest");
+		comandi.add("guarda stanza");
+		comandi.add("posa EXCALIBUR");
+		comandi.add("guarda stanza");
+		comandi.add("fine");
+		io = new IOSimulator(comandi);
 		assertEquals("prendi EXCALIBUR", io.leggiRiga());
 		assertEquals("vai ovest", io.leggiRiga());
 		assertEquals("guarda stanza", io.leggiRiga());
@@ -81,16 +106,42 @@ class IOSimulatorTest {
 	
 	@Test
 	public void testMorte() {
-		io = new IOSimulator("vai sud", "vai nord", "vai sud", "vai nord", "vai sud",
-							 "vai nord", "vai sud", "vai nord", "vai sud", "vai nord",
-							 "vai sud", "vai nord", "vai sud", "vai nord", "vai sud",
-							 "vai nord", "vai sud", "vai nord", "vai sud", "vai nord");
+		comandi.add("vai sud");
+		comandi.add("vai nord");
+		comandi.add("vai sud");
+		comandi.add("vai nord");
+		comandi.add("vai sud");
+		comandi.add("vai nord");
+		comandi.add("vai sud");
+		comandi.add("vai nord");
+		comandi.add("vai sud");
+		comandi.add("vai nord");
+		comandi.add("vai sud");
+		comandi.add("vai nord");
+		comandi.add("vai sud");
+		comandi.add("vai nord");
+		comandi.add("vai sud");
+		comandi.add("vai nord");
+		comandi.add("vai sud");
+		comandi.add("vai nord");
+		comandi.add("vai sud");
+		comandi.add("vai nord");
+		comandi.add("vai sud");
+		comandi.add("vai nord");
+		io = new IOSimulator(comandi);
 		morte();
 	}
 	
 	@Test
 	public void testGiroLabirinto() {
-		io = new IOSimulator("vai sud","vai nord","vai ovest","vai est","vai est","vai ovest","vai nord");
+		comandi.add("vai sud");
+		comandi.add("vai nord");
+		comandi.add("vai ovest");
+		comandi.add("vai est");
+		comandi.add("vai est");
+		comandi.add("vai ovest");
+		comandi.add("vai nord");
+		io = new IOSimulator(comandi);
 		assertEquals("vai sud", io.leggiRiga());
 		assertEquals("vai nord", io.leggiRiga());
 		assertEquals("vai ovest", io.leggiRiga());

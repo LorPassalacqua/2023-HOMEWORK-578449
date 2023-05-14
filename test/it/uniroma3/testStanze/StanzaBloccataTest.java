@@ -17,7 +17,7 @@ class StanzaBloccataTest {
 	
 	@BeforeEach
 	public void setUp() {
-		bloccata = new StanzaBloccata("bloccata");
+		bloccata = new StanzaBloccata("bloccata", "est", "chiave");
 		key = new Attrezzo("chiave",1);
 	}
 	
@@ -36,6 +36,7 @@ class StanzaBloccataTest {
 		bloccata.impostaStanzaAdiacente("est", seconda);
 		assertEquals( seconda ,bloccata.getStanzaAdiacente("est"));
 	}
+	
 	
 	@Test
 	public void testProvoAltreStanze() {

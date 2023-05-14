@@ -6,7 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
+import it.uniroma3.ambienti.Labirinto;
+import it.uniroma3.ambienti.LabirintoBuilder;
 import it.uniroma3.ambienti.Stanza;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.giocatore.Giocatore;
@@ -14,12 +15,17 @@ import it.uniroma3.giocatore.Giocatore;
 
 public class partitaTest {
 	
+	Labirinto lab;
 	private Partita partita;
 
 	
 	@BeforeEach
 	public void setUp() {
-		partita = new Partita();
+		lab = new LabirintoBuilder()
+				.addStanzaIniziale("Atrio")
+				.addStanzaVincente("Uscita")
+				.getLabirinto();
+		partita = new Partita(lab);
 		
 	}
 	

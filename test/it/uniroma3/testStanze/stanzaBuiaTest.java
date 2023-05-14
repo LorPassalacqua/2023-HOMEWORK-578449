@@ -19,7 +19,7 @@ class stanzaBuiaTest {
 	
 	@BeforeEach
 	public void setUp() {
-		buia = new StanzaBuia("buia");
+		buia = new StanzaBuia("buia", "EXCALIBUR");
 		key = new Attrezzo("EXCALIBUR", 5);
 	}
 	

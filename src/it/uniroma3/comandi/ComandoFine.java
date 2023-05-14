@@ -7,10 +7,12 @@ import it.uniroma3.diadia.Partita;
 
 public class ComandoFine implements Comando{
 	
+	static final private String fine = "--| Grazie di aver Giocato!! |--";
+	
 	@Override
 	public void esegui(Partita partita, IO io) {
 		partita.setFinita();
-		io.mostraMessaggio("--| Grazie di aver Giocato!! |--");
+		io.mostraMessaggio(fine);
 	}
 	
 	
@@ -28,5 +30,11 @@ public class ComandoFine implements Comando{
 	public String getParametro() {
 		return null;
 	}
+	
+	
+	public static String getMessaggiofine() {
+		return fine;
+	}
+	
 	
 }

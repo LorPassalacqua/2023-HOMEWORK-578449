@@ -1,13 +1,17 @@
 package it.uniroma3.ambienti;
 
+
+
 import it.uniroma3.attrezzi.Attrezzo;
 
 public class StanzaMagica extends Stanza{
 
-	final static private int SOGLIA_MAGICA_DEFAULT = 3;
+	final static private int SOGLIA_MAGICA_DEFAULT = 1;
 	
 	private int contatoreAttrezziPosati;
 	private int sogliaMagica;
+	
+	
 	
 	public StanzaMagica(String nome) {
 		this(nome, SOGLIA_MAGICA_DEFAULT);
@@ -19,6 +23,7 @@ public class StanzaMagica extends Stanza{
 		this.sogliaMagica = soglia;
 	}
 	
+	
 	@Override
 	public boolean addAttrezzo(Attrezzo attrezzo) {
 		
@@ -29,6 +34,7 @@ public class StanzaMagica extends Stanza{
 		
 	}
 
+	
 	private Attrezzo modificaAttrezzo(Attrezzo attrezzo) {
 		
 		StringBuilder nomeInvertito;
@@ -39,6 +45,12 @@ public class StanzaMagica extends Stanza{
 		attrezzo = new Attrezzo(nomeInvertito.toString(),pesoX2);
 		
 		return attrezzo;
+	}
+
+	
+	public Boolean isMagica() {
+		if(sogliaMagica >= 1) return true;
+		return false;
 	}
 	
 

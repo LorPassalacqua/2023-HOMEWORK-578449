@@ -5,9 +5,9 @@ public class StanzaBuia extends Stanza{
 	private String key;			//	salva il nome dell oggetto per sbloccare
 								//	la descrizione completa della stanza
 	
-	public StanzaBuia(String nome) {
+	public StanzaBuia(String nome, String oggetto) {
 		super(nome);
-		key = "EXCALIBUR";
+		key = oggetto;
 	}
 
 

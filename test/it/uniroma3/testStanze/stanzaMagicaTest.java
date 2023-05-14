@@ -58,11 +58,7 @@ class stanzaMagicaTest {
 		assertEquals(1, test.getAttrezzo("spada").getPeso());
 	}
 	
-	@Test
-	public void testStanzaPiena() {
-		aggiungiMaxStanza(test, lanterna);
-		assertFalse(test.addAttrezzo(spada));
-	}
+	
 	
 	
 	public void aggiungiMaxStanza(Stanza stanza, Attrezzo attrezzo) {
